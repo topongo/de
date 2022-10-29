@@ -20,7 +20,7 @@ function player_icon(){
 
 
 function player_data(){
-  playerctl metadata -a -f "{{status}}%%{{playerName}}%%{{default(title,url)}}%%{{artist}}%%{{album}}" | 
+  playerctl metadata -a -f "{{status}}%%{{playerName}}%%{{default(title,url)}}%%{{artist}}%%{{album}}" 2> /dev/null | 
     sed -e 's/%%spotify/%%1/' -e 's/%%vlc/%%2/' -e 's/%%firefox/%%3/' -e 's/^Playing%%/a%%/' -e 's/^Paused%%/b%%/' | sort | 
     sed -e 's/%%1/%%spotify/' -e 's/%%2/%%vlc/' -e 's/%%3/%%firefox/' -e 's/^a%%/Playing%%/' -e 's/^b%%/Paused%%/'
 }
