@@ -1,9 +1,8 @@
 #!/bin/zsh
 
-
 function player_icon(){
   case "$1" in
-    spotify)
+    spotify|spotifyd)
       echo -n ""
       ;;
     firefox)
