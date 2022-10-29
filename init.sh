@@ -9,7 +9,10 @@ fi
 
 cd ~/.config
 
-ln -fs $HERE/rofi
-ln -fs $HERE/polybar
-ln -fs $HERE/i3
+ln -fs $HERE ~/de
+ln -fs ~/de/rofi
+ln -fs ~/de/polybar
+ln -fs ~/de/i3
+ln -fs ~/de/spotifyd
+ln -fs ~/de/spotifyd.service systemd/user/spotifyd.service
 
