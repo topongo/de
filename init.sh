@@ -9,10 +9,16 @@ fi
 
 cd ~/.config
 
-ln -fs $HERE ~/de
+
+if [[ ! -L ~/de ]]; then
+	ln -fs $HERE ~/de
+fi
 ln -fs ~/de/rofi
 ln -fs ~/de/polybar
 ln -fs ~/de/i3
 ln -fs ~/de/spotifyd
 ln -fs ~/de/spotifyd.service systemd/user/spotifyd.service
+ln -fs ~/de/conky conky
+ln -fs ~/de/conky/conkyrc ~/.conkyrc
+ln -fs ~/de/fusuma
 

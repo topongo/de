@@ -38,14 +38,23 @@ exec --no-startup-id nm-applet
 # exec --no-startup-id latte-dock
 
 # start compositor
-exec_always --no-startup-id "picom --config /home/topongo/.config/picom.conf"
+exec_always --no-startup-id picom --config ~/.config/picom.conf
 
 # start polybar
-exec_always --no-startup-id "/home/topongo/.config/polybar/launch.sh"
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # start wallpapaer manager
-exec --no-startup-id feh --bg-scale /home/topongo/.config/i3/backgroud/neon_portal.jpg
+exec --no-startup-id feh --bg-scale ~/.config/i3/backgroud/neon_portal.jpg
 
+# start fusuma gersture manager
+exec_always --no-startup-id ~/.config/fusuma/start.sh > /tmp/y
+
+# start conky
+exec_always --no-startup-id ~/.config/conky/start.sh
+
+# start telegram and discord
+exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id discord --start-minimized
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -84,7 +93,8 @@ bindsym --release $mod+d exec --no-startup-id "~/.config/rofi/start.sh"
 # start firefox
 bindsym --release $mod+f exec --no-startup-id firefox
 # start konsole
-bindsym --release $mod+t exec --no-startup-id konsole
+bindsym --release $mod+t         exec --no-startup-id konsole
+bindsym --release $mod+Control+t exec --no-startup-id konsole
 
 
 # change focus
@@ -192,29 +202,37 @@ bindsym $mod+Control+Delete exec --no-startup-id /home/topongo/.config/rofi/scri
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Shift+Left resize shrink width 30 px or 30 ppt
-        bindsym Shift+Down resize grow height 30 px or 30 ppt
-        bindsym Shift+Up resize shrink height 30 px or 30 ppt
-        bindsym Shift+Right resize grow width 30 px or 30 ppt
+  # These bindings trigger as soon as you enter the resize mode
+   
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Shift+Left resize shrink width 30 px or 30 ppt
+  bindsym Shift+Down resize grow height 30 px or 30 ppt
+  bindsym Shift+Up resize shrink height 30 px or 30 ppt
+  bindsym Shift+Right resize grow width 30 px or 30 ppt
 
-        # same bindings, but for the arrow keys
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+  # same bindings, but for the arrow keys
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
 }
 
+
+mode "curtain" {
+  # nothing. everything is disabled
+  bindsym $mod+e mode "default"
+}
+
+
+bindsym $mod+q mode "curtain"
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -251,5 +269,7 @@ for_window [class="Latte Dock"] floating enable; move position 70 ppt 81 ppt
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [class="VNC Server"] move scratchpad
 for_window [title="polybar : bluetoothctl"] floating enable; resize set 40 ppt 20 ppt; move position 50 ppt 4 ppt
+for_window [title="splash"] floating enable
+for_window [title="bodoCurtain"] fullscreen
 for_window [all] border pixel 0
 
