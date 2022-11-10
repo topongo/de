@@ -47,10 +47,13 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale ~/.config/i3/backgroud/neon_portal.jpg
 
 # start fusuma gersture manager
-exec_always --no-startup-id ~/.config/fusuma/start.sh > /tmp/y
+exec_always --no-startup-id ~/.config/fusuma/start.sh
 
 # start conky
 exec_always --no-startup-id ~/.config/conky/start.sh
+
+#
+exec --no-startup-id dunst
 
 # start telegram and discord
 exec --no-startup-id telegram-desktop -startintray
@@ -68,9 +71,9 @@ bindsym XF86AudioMicMute      exec --no-startup-id pactl set-source-mute @DEFAUL
 bindsym XF86MonBrightnessUp   exec --no-startup-id ~/bin/brightnessctl.sh up 5
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/bin/brightnessctl.sh down 5
 
-bindsym XF86AudioPlay         exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext         exec --no-startup-id playerctl next
-bindsym XF86AudioPrev         exec --no-startup-id playerctl previous
+bindsym XF86AudioPlay         exec --no-startup-id ~/.config/polybar/scripts/playing.sh l-click
+bindsym XF86AudioNext         exec --no-startup-id ~/.config/polybar/scripts/playing.sh l-dclick
+bindsym XF86AudioPrev         exec --no-startup-id ~/.config/polybar/scripts/playing.sh r-dclick
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
