@@ -52,7 +52,10 @@ exec_always --no-startup-id ~/.config/fusuma/start.sh
 # start conky
 exec_always --no-startup-id ~/.config/conky/start.sh
 
-#
+# start flameshot
+exec --no-startup-id flameshot
+
+# start dunst
 exec --no-startup-id dunst
 
 # start telegram and discord
@@ -95,6 +98,10 @@ bindsym --release $mod+d exec --no-startup-id "~/.config/rofi/start.sh"
 
 # start firefox
 bindsym --release $mod+f exec --no-startup-id firefox
+
+# start flameshot
+bindsym --release Print exec flameshot gui
+
 # start konsole
 bindsym --release $mod+t         exec --no-startup-id konsole
 bindsym --release $mod+Control+t exec --no-startup-id konsole
