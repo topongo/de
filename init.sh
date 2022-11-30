@@ -19,6 +19,7 @@ ln -fs ~/de/i3
 ln -fs ~/de/spotifyd
 ln -fs ~/de/spotifyd.service systemd/user/spotifyd.service
 ln -fs ~/de/conky conky
+ln -fs ~/de/picom.conf picom.conf
 ln -fs ~/de/conky/conkyrc ~/.conkyrc
 ln -fs ~/de/fusuma
 
